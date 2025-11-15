@@ -16,7 +16,7 @@ type ShortenRequest struct {
 func ShortenURL(c *gin.Context) {
 	var req ShortenRequest
 	if err := c.BindJSON(&req); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "invalid request"})
+		// c.JSON(http.StatusBadRequest, gin.H{"error": "invalid request"})
 		return
 	}
 
@@ -28,7 +28,7 @@ func ShortenURL(c *gin.Context) {
 		return
 	}
 
-	c.JSON(http.StatusOK, gin.H{
+	c.JSON(200, gin.H{
 		"original": req.Original,
 		"short":    shortCode,
 	})
